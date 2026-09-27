@@ -1,20 +1,13 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 吳雨柔 個人作品集網站
 
-# Run and deploy your AI Studio app
+React + Vite + TailwindCSS 打造的個人作品集，深色＋金色主題，展示資訊管理與跨域設計相關專案。
 
-This contains everything you need to run your app locally.
+## 技術棧
+React・TypeScript・Vite・TailwindCSS
 
-View your app in AI Studio: https://ai.studio/apps/a14b9d81-28f6-4e78-8fd6-0615b3c418b5
+## 本機執行
+1. `npm install`
+2. `npm run dev`
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 線上預覽
+（部署後把正式網址貼這裡）
