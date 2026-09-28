@@ -1,20 +1,31 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# 吳雨柔 Yu-Jou Wu ｜ 個人作品集
 
-# Run and deploy your AI Studio app
+資訊管理系學生的個人作品集網站，展示系統開發、電腦視覺、資料分析與前端設計相關專案。深色底＋金色點綴的單頁網站。
 
-This contains everything you need to run your app locally.
+線上預覽：（部署後貼網址）
 
-View your app in AI Studio: https://ai.studio/apps/a14b9d81-28f6-4e78-8fd6-0615b3c418b5
+## 技術
 
-## Run Locally
+React 19、TypeScript、Vite、Tailwind CSS 4、motion、lucide-react
 
-**Prerequisites:**  Node.js
+## 本機執行
 
+需要 Node.js。
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+    npm install
+    npm run dev
+
+開啟 http://localhost:3000
+
+## 內容更新
+
+作品資料集中在 `src/data/portfolioData.ts`，型別定義在 `src/types/portfolio.ts`。新增作品時在 `PROJECTS` 陣列加一筆，並在 `src/components/ProjectArt.tsx` 補對應的視覺主題。
+
+## 專案結構
+
+    src/
+      components/   各區塊元件（Hero、SelectedWorks、ProjectModal 等）
+      data/         作品與個人資料
+      types/        TypeScript 型別
+      App.tsx       頁面組裝與狀態管理
+      
