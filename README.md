@@ -6,7 +6,7 @@
 
 ## 技術
 
-React 19、TypeScript、Vite、Tailwind CSS 4、motion、lucide-react
+React 19、TypeScript、Vite、Tailwind CSS 4
 
 ## 本機執行
 
@@ -14,8 +14,6 @@ React 19、TypeScript、Vite、Tailwind CSS 4、motion、lucide-react
 
     npm install
     npm run dev
-
-開啟 http://localhost:3000
 
 ## 內容更新
 
