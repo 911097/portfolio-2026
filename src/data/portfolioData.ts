@@ -91,34 +91,33 @@ export const SKILL_CATEGORIES = [
 ];
 
 export const PROJECTS: Project[] = [
-  // 1. Smart Hospital Anonymous Tracking (畢業專題 · AI 系統)
+  // 1. Anonymous Tracking System (智慧醫院匿名特徵感知與預警平臺 · 畢業專題)
   {
-    id: 'smart-hospital-sensing',
-    title: '智慧醫院匿名特徵感知與事件預警平臺',
-    subtitleEn: 'PROJECT 01 / GRADUATION PROJECT · AI SYSTEM',
-    originalTitle: '智慧醫院匿名特徵感知與事件預警平臺',
+    id: 'anonymous-tracking-system',
+    title: '智慧醫院匿名特徵感知與預警平臺',
+    originalTitle: '智慧醫院匿名特徵感知與預警平臺',
     filterCategory: 'ai_systems',
-    displayBadge: '畢業專題 · AI 系統',
+    displayBadge: '畢業專題 ‧ AI 系統',
     tags: ['Python', 'YOLOv8n', 'ReID 匿名追蹤'],
     year: '2026',
     role: '特徵工程實作、影片測試與誤判除錯、統籌團隊會議記錄',
     tools: ['Python', 'YOLOv8n', 'OpenCV', 'CIELAB', 'RTX 5060'],
-    leadParagraph: '醫院管制區防走失匿名追蹤系統。不留存人臉影像，改用 3D 骨架幾何比例、CIELAB 軀幹與下肢色彩及步態動力學認人，兼顧患者隱私與安全監控。',
-    problem: '醫院管制區要防走失與異常滯留，但病患與長者對隱私極其敏感，依法規不能隨意儲存或辨識人臉生物特徵。',
-    solutionAndMethods: '摒除人臉辨識，萃取 3D 骨架幾何比例、CIELAB 衣著色彩與步態特徵；異常對象另建立「危險事件特徵追蹤池」，在匿名前提下保留特徵向量供事後回溯。自錄 7 支影片、13,959 幀驗證。',
+    leadParagraph: '醫院管制區防走失匿名追蹤系統。不留存人臉影像，改用 3D 骨架幾何比例、CIELAB 衣著色彩與步態特徵認人；異常對象另建立危險事件特徵追蹤池供事後回溯。',
+    problem: '醫院管制區要防走失與異常滯留，但不留存人臉影像。',
+    solutionAndMethods: '不辨識人臉，改用 3D 骨架幾何比例、CIELAB 軀幹與下肢色彩及步態動力學認人。以 HEAD_EXCLUSION_RATIO = 0.25 排除頭部色彩干擾。設計動態可信度驗證閥門解決口罩遮蔽、側身旋轉與走廊交錯漂移，連續 3～5 幀通過比對才發放正式 ID。',
     highlights: [
-      '動態可信度驗證閥門（Dynamic Validation Gate）：解決口罩遮蔽 (ΔE 暴增標 Unavailable)、側身旋轉 (肩寬投影近 0 加常數 ϵ)、走廊交錯 (腳踝漂移改用軀幹中心)。',
+      '動態可信度驗證閥門（Dynamic Validation Gate）：解決口罩遮蔽（有效膚色不足標 Unavailable）、側身旋轉（偵測到側身退出該項比對，分母加保護常數 ϵ）、走廊交錯（設運動合理範圍丟掉跳點，改用軀幹中心估計）。',
       '3 人交錯測試影片：未加閥門誤換 ID 約 9 次 → 啟動動態閥門後降到 5～6 次。',
-      '比對閥值調校：ReID Threshold 0.65（初期 0.80 過嚴易漏配，調校至 0.65 平衡辨識率與召回率），連續 3～5 幀通過才發放正式 ID。',
-      '滯留示警（Overstay Limit）：管制區逾時 90 幀（約 12 秒）即觸發預警推播。'
+      '比對閥值調校：ReID Threshold 0.65（初期 0.80 過嚴易漏配，測試調校後優化至 0.65，平衡辨識率與召回率），連續 3～5 幀通過比對才發放正式 ID。',
+      '滯留示警（Overstay Limit）：管制區逾時 90 幀（約 12 秒）即觸發示警。'
     ],
     metrics: [
       { label: '已實作特徵維度', value: '28 維 (目標 34 維)' },
       { label: '自錄測試影片', value: '7 支' },
-      { label: '最長測試片段', value: '13,959 幀 (~7.7分)' },
-      { label: '交錯誤換 ID 改善', value: '9次 → 5~6次' }
+      { label: '最長測試片段', value: '13,959 幀 (~7.7 分鐘)' },
+      { label: '交錯誤換 ID 改善', value: '9 次 → 5~6 次' }
     ],
-    artTheme: 'hospital-sensing',
+    artTheme: 'anonymous-tracking-ui',
     inventionAward: '高雄 KIDE 國際發明展（2026/11 出賽代表）',
     videoLink: 'https://youtu.be/DzUjcut3XwM',
     subPages: [
@@ -128,35 +127,7 @@ export const PROJECTS: Project[] = [
     ]
   },
 
-  // 2. Ancient Luoyang RWD Web (前端開發 · 響應式網頁)
-  {
-    id: 'ancient-luoyang-rwd',
-    title: '古都洛陽 RWD 響應式網頁',
-    subtitleEn: 'PROJECT 02 / FRONTEND DEVELOPMENT',
-    originalTitle: '古都洛陽介紹站｜HTML/CSS 響應式排版設計',
-    filterCategory: 'web_dev',
-    displayBadge: '前端開發 · RWD',
-    tags: ['原生 HTML5', 'CSS3 切版', 'RWD 1440/375'],
-    year: '2024',
-    role: '前端切版、RWD 響應式設計、純手寫 HTML/CSS',
-    tools: ['HTML5', 'CSS3', 'Media Queries (RWD)', 'Flexbox'],
-    leadParagraph: '古都洛陽文化介紹網站。同一份內容同時針對桌機 (1440px) 與手機 (375px) 視窗進行個別排版與斷點適配，呈現純手寫原生前端切版功力。',
-    problem: '傳統文化主題網頁容易在行動端出現水平捲動條或文字擁擠折行，缺乏針對不同螢幕尺寸的專屬閱讀節奏。',
-    solutionAndMethods: '採用語意化 HTML 標籤與彈性 Flexbox 排版，在 1440px 桌機端展示寬闊橫幅與三欄圖文排版，在 375px 行動端重構成單手可瀏覽的乾淨卡片流。',
-    highlights: [
-      '嚴謹雙端斷點適配：Desktop 1440px 與 Mobile 375px 雙端量身排版。',
-      '純手寫原生 HTML/CSS 切版，代碼結構清晰，無第三方肥大框架負擔。',
-      '精確的留白與字級比率控制，確保大圖與古風排版和諧一致。'
-    ],
-    metrics: [
-      { label: '桌機基準寬', value: '1440px' },
-      { label: '手機基準寬', value: '375px' },
-      { label: '切版核心', value: '純手寫原生 HTML/CSS' }
-    ],
-    artTheme: 'rwd-luoyang'
-  },
-
-  // 3. LT Architects Website Redesign (前端設計 · 空間美學)
+  // 2. LT Architects Website Redesign (前端設計 · 空間美學)
   {
     id: 'lt-architects-web',
     title: 'LT Architects 建築事務所網站',

@@ -17,7 +17,7 @@ export interface ProjectMetric {
 export interface Project {
   id: string;
   title: string;
-  subtitleEn: string;
+  subtitleEn?: string;
   originalTitle: string;
   filterCategory: ProjectFilter;
   displayBadge: string;
@@ -30,7 +30,7 @@ export interface Project {
   solutionAndMethods: string;
   highlights: string[];
   metrics: ProjectMetric[];
-  artTheme: 'system-dev' | 'visual-design' | 'ui-ux-phone' | 'campus-branding' | 'mobile-wallet' | 'infographic-poster' | 'hospital-sensing' | 'rehab-skeleton' | 'safety-surveillance' | 'rfm-analytics' | 'supply-chain' | 'smartfit-mirror' | 'lt-architects' | 'rwd-luoyang' | 'app-ui' | 'elderly-care' | 'white-model-3d' | 'print-isometric';
+  artTheme: 'system-dev' | 'visual-design' | 'ui-ux-phone' | 'campus-branding' | 'mobile-wallet' | 'infographic-poster' | 'hospital-sensing' | 'rehab-skeleton' | 'safety-surveillance' | 'rfm-analytics' | 'supply-chain' | 'smartfit-mirror' | 'lt-architects' | 'rwd-luoyang' | 'app-ui' | 'elderly-care' | 'white-model-3d' | 'print-isometric' | 'anonymous-tracking-ui';
   inventionAward?: string;
   videoLink?: string;
   subPages?: {

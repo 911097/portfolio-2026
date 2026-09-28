@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --color-gold: #E5A84B;
+  --color-gold-hover: #d9993e;
+  --color-gold-light: rgba(229, 168, 75, 0.12);
+  --color-dark-bg: #0A0C0F;
+  --color-dark-card: #12141A;
+  --color-dark-surface: #181B22;
+
+  --font-serif: 'Playfair Display', 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-brand: 'Cinzel', serif;
+}
+
 @layer base {
   :root {
     --font-serif: 'Playfair Display', 'Instrument Serif', Georgia, serif;
@@ -85,4 +99,3 @@
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-

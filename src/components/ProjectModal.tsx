@@ -166,10 +166,21 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Interactive Actions Footer */}
           <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <span className="text-xs font-mono-code text-stone-500">
                 {project.year} · {project.filterCategory}
               </span>
+              {project.videoLink && (
+                <a
+                  href={project.videoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-code border border-white/15 text-stone-300 hover:text-[#E5A84B] hover:border-[#E5A84B]/40 transition-colors"
+                >
+                  <span>觀看實測影片</span>
+                  <ArrowUpRight size={13} />
+                </a>
+              )}
             </div>
 
             <button

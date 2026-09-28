@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ProjectArtProps {
-  theme: 'system-dev' | 'visual-design' | 'ui-ux-phone' | 'campus-branding' | 'mobile-wallet' | 'infographic-poster' | 'hospital-sensing' | 'rehab-skeleton' | 'safety-surveillance' | 'rfm-analytics' | 'supply-chain' | 'smartfit-mirror' | 'lt-architects' | 'rwd-luoyang' | 'app-ui' | 'elderly-care' | 'white-model-3d' | 'print-isometric';
+  theme: 'system-dev' | 'visual-design' | 'ui-ux-phone' | 'campus-branding' | 'mobile-wallet' | 'infographic-poster' | 'hospital-sensing' | 'rehab-skeleton' | 'safety-surveillance' | 'rfm-analytics' | 'supply-chain' | 'smartfit-mirror' | 'lt-architects' | 'rwd-luoyang' | 'app-ui' | 'elderly-care' | 'white-model-3d' | 'print-isometric' | 'anonymous-tracking-ui';
   className?: string;
   isHovered?: boolean;
 }
@@ -557,6 +557,177 @@ export const ProjectArt: React.FC<ProjectArtProps> = ({ theme, className = '', i
           <text x="75" y="85" fill="#E2E8F0" fontSize="11" fontFamily="'JetBrains Mono', monospace">3DS MAX VIEWPORT</text>
           <text x="75" y="105" fill="#94A3B8" fontSize="9" fontFamily="'JetBrains Mono', monospace">SHADING: CLAY WHITE</text>
           <text x="760" y="470" textAnchor="end" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">空間幾何配置與白模結構建模</text>
+        </svg>
+      )}
+
+      {/* 13. Anonymous Tracking System UI Mockup */}
+      {theme === 'anonymous-tracking-ui' && (
+        <svg viewBox="0 0 800 500" className="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="anon-dark-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0B0E14" />
+              <stop offset="100%" stopColor="#07090E" />
+            </linearGradient>
+            <pattern id="monitor-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#161B28" strokeWidth="0.6" opacity="0.6" />
+            </pattern>
+          </defs>
+
+          {/* Background */}
+          <rect width="800" height="500" fill="url(#anon-dark-bg)" />
+          <rect width="800" height="500" fill="url(#monitor-grid)" />
+
+          {/* Top Window Titlebar */}
+          <rect width="800" height="34" fill="#131722" stroke="#1C2333" strokeWidth="1" />
+          <text x="24" y="21" fill="#94A3B8" fontSize="11" fontFamily="'JetBrains Mono', monospace" fontWeight="500">
+            Anonymous Tracking System v2.0
+          </text>
+          <g transform="translate(730, 11)">
+            <line x1="0" y1="6" x2="10" y2="6" stroke="#64748B" strokeWidth="1.2" />
+            <rect x="18" y="1" width="10" height="10" fill="none" stroke="#64748B" strokeWidth="1.2" />
+            <path d="M36,1 L46,11 M46,1 L36,11" stroke="#94A3B8" strokeWidth="1.2" />
+          </g>
+
+          {/* Live Camera Viewport Perspective Wireframe */}
+          <line x1="40" y1="380" x2="490" y2="380" stroke="#1A2234" strokeWidth="1" />
+          <line x1="80" y1="180" x2="20" y2="440" stroke="#151C2C" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1="420" y1="180" x2="490" y2="440" stroke="#151C2C" strokeWidth="1" strokeDasharray="4 4" />
+
+          {/* Restricted Zone Marker in Cyan */}
+          <rect x="180" y="230" width="300" height="180" rx="3" fill="#06B6D4" fillOpacity="0.05" stroke="#06B6D4" strokeWidth="1.2" strokeDasharray="6 4" />
+          <text x="195" y="252" fill="#22D3EE" fontSize="10" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.08em">
+            RESTRICTED ZONE // OVERSTAY LIMIT
+          </text>
+
+          {/* Tracked Target: Person Bounding Box & Keypoints (Anon_User_0003) */}
+          <g transform="translate(130, 80)">
+            {/* Box Header Badge */}
+            <rect x="0" y="0" width="130" height="20" rx="2" fill="#10B981" />
+            <text x="65" y="14" textAnchor="middle" fill="#07090E" fontSize="9.5" fontFamily="'JetBrains Mono', monospace" fontWeight="700">
+              Anon_User_0003 | 86%
+            </text>
+
+            {/* Person Bounding Rectangle */}
+            <rect x="0" y="20" width="130" height="280" rx="2" fill="#10B981" fillOpacity="0.04" stroke="#10B981" strokeWidth="1.5" />
+
+            {/* HEAD EXCLUSION Box (HEAD_EXCLUSION_RATIO = 0.25) */}
+            <rect x="35" y="28" width="60" height="45" fill="none" stroke="#64748B" strokeWidth="1" strokeDasharray="3 2" />
+            <text x="65" y="55" textAnchor="middle" fill="#94A3B8" fontSize="8" fontFamily="'JetBrains Mono', monospace">
+              HEAD EXCLUDED
+            </text>
+
+            {/* Pose Skeleton Structure */}
+            <g stroke="#38BDF8" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              {/* Spine */}
+              <line x1="65" y1="73" x2="65" y2="155" />
+              {/* Shoulders */}
+              <line x1="38" y1="95" x2="92" y2="95" />
+              {/* Left Arm */}
+              <line x1="38" y1="95" x2="28" y2="135" />
+              <line x1="28" y1="135" x2="24" y2="180" />
+              {/* Right Arm */}
+              <line x1="92" y1="95" x2="102" y2="135" />
+              <line x1="102" y1="135" x2="106" y2="180" />
+              {/* Pelvis */}
+              <line x1="48" y1="155" x2="82" y2="155" />
+              {/* Left Leg */}
+              <line x1="48" y1="155" x2="45" y2="220" />
+              <line x1="45" y1="220" x2="48" y2="285" />
+              {/* Right Leg */}
+              <line x1="82" y1="155" x2="85" y2="220" />
+              <line x1="85" y1="220" x2="82" y2="285" />
+            </g>
+
+            {/* Joint Dots */}
+            <circle cx="65" cy="73" r="3" fill="#38BDF8" />
+            <circle cx="38" cy="95" r="3" fill="#38BDF8" />
+            <circle cx="92" cy="95" r="3" fill="#38BDF8" />
+            <circle cx="28" cy="135" r="2.5" fill="#38BDF8" />
+            <circle cx="102" cy="135" r="2.5" fill="#38BDF8" />
+            <circle cx="24" cy="180" r="2.5" fill="#38BDF8" />
+            <circle cx="106" cy="180" r="2.5" fill="#38BDF8" />
+            <circle cx="48" cy="155" r="3" fill="#38BDF8" />
+            <circle cx="82" cy="155" r="3" fill="#38BDF8" />
+            <circle cx="45" cy="220" r="3" fill="#38BDF8" />
+            <circle cx="85" cy="220" r="3" fill="#38BDF8" />
+            <circle cx="48" cy="285" r="3" fill="#38BDF8" />
+            <circle cx="82" cy="285" r="3" fill="#38BDF8" />
+          </g>
+
+          {/* Right Floating System Monitor HUD Panel */}
+          <g transform="translate(515, 48)">
+            <rect width="260" height="420" rx="8" fill="#10141E" stroke="#1D2436" strokeWidth="1" />
+
+            {/* Section 1: System Monitor */}
+            <text x="18" y="28" fill="#38BDF8" fontSize="11" fontWeight="700" fontFamily="'JetBrains Mono', monospace">
+              [ SYSTEM MONITOR ]
+            </text>
+            <text x="18" y="52" fill="#94A3B8" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              FPS       : <tspan fill="#E2E8F0">7.6</tspan>
+            </text>
+            <text x="18" y="72" fill="#94A3B8" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              Frame     : <tspan fill="#E2E8F0">004641</tspan> / 13,959
+            </text>
+            <text x="18" y="92" fill="#94A3B8" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              Active IDs: <tspan fill="#E2E8F0">2</tspan>
+            </text>
+            <text x="18" y="112" fill="#94A3B8" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              Total IDs : <tspan fill="#E2E8F0">2</tspan>
+            </text>
+            <text x="18" y="132" fill="#94A3B8" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              ID Switch : <tspan fill="#10B981" fontWeight="700">0</tspan>
+            </text>
+
+            <line x1="18" y1="148" x2="242" y2="148" stroke="#1D2436" strokeWidth="1" />
+
+            {/* Section 2: Active Targets */}
+            <text x="18" y="172" fill="#38BDF8" fontSize="11" fontWeight="700" fontFamily="'JetBrains Mono', monospace">
+              [ ACTIVE TARGETS ]
+            </text>
+            <text x="18" y="196" fill="#10B981" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              Anon_0001 (Walking)
+            </text>
+            <text x="18" y="216" fill="#10B981" fontSize="10.5" fontFamily="'JetBrains Mono', monospace">
+              Anon_0003 (Static)
+            </text>
+
+            <line x1="18" y1="234" x2="242" y2="234" stroke="#1D2436" strokeWidth="1" />
+
+            {/* Section 3: Feature & Threshold Specs */}
+            <text x="18" y="258" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">
+              ReID Thresh   : 0.65
+            </text>
+            <text x="18" y="278" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">
+              Feature Vector: 28D (Target 34D)
+            </text>
+            <text x="18" y="298" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">
+              Dynamic Gate  : ACTIVE
+            </text>
+
+            {/* Gold Highlight Point 1: Overstay Limit Alert Box */}
+            <g transform="translate(18, 324)">
+              <rect width="224" height="34" rx="4" fill="#E5A84B" fillOpacity="0.12" stroke="#E5A84B" strokeWidth="1" />
+              <text x="112" y="21" textAnchor="middle" fill="#E5A84B" fontSize="10" fontWeight="700" fontFamily="'JetBrains Mono', monospace">
+                OVERSTAY LIMIT: 90 FRAMES (~12s)
+              </text>
+            </g>
+
+            {/* Bottom System Identity */}
+            <text x="18" y="388" fill="#475569" fontSize="9" fontFamily="'JetBrains Mono', monospace">
+              Smart Hospital AnonymousReID v2.0
+            </text>
+            <text x="18" y="402" fill="#475569" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+              Privacy-Safe · No Face Data
+            </text>
+          </g>
+
+          {/* Gold Highlight Point 2: Bottom Status Banner & Corner Pin */}
+          <g transform="translate(30, 462)">
+            <rect x="0" y="-8" width="6" height="6" fill="#E5A84B" />
+            <text x="16" y="-3" fill="#94A3B8" fontSize="10" fontFamily="'JetBrains Mono', monospace">
+              RTX 5060 ｜ YOLOv8n ｜ 13,959 FRAMES VALIDATED
+            </text>
+          </g>
         </svg>
       )}
 
