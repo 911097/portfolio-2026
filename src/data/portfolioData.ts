@@ -127,32 +127,70 @@ export const PROJECTS: Project[] = [
     ]
   },
 
-  // 2. LT Architects Website Redesign (前端設計 · 空間美學)
+  // 2. LT Architects (Slide 17: Wix 範本架構重構與視覺改作)
   {
     id: 'lt-architects-web',
-    title: 'LT Architects 建築事務所網站',
-    subtitleEn: 'PROJECT 03 / FRONTEND DESIGN',
-    originalTitle: 'LT Architects 建築事務所｜Wix 範本架構重構與視覺改作',
+    title: 'LT ARCHITECTS',
+    originalTitle: 'Wix 範本架構重構與視覺改作',
     filterCategory: 'web_dev',
-    displayBadge: '前端設計 · 空間美學',
-    tags: ['Figma 原型', '資訊架構重構', '深色極簡'],
+    displayBadge: 'Web ｜ 視覺改作',
+    designBadges: ['Wix 範本', 'Figma', '視覺改作'],
+    concept: 'Concept：深色底、金色小字，圖放大，文字退後。',
+    tags: ['Wix 範本', 'Figma', '視覺改作', '深色極簡', '建築美學'],
     year: '2024',
-    role: '架構重構、版面配置、視覺改作',
-    tools: ['Figma', 'Wix 範本', '資訊架構 (IA)', 'Grid System'],
-    leadParagraph: '針對建築事務所網站進行架構重整與視覺優化。核心概念：深色底、金色小字，圖片放大，文字適度退後，營造靜謐高雅的建築空間感。',
-    problem: '常見套版範本排版擁擠且字體喧賓奪主，無法突顯建築攝影與空間尺度的大氣感。',
-    solutionAndMethods: '重構導覽層級，放大建築完工攝影比例，改採低對比冷灰金小字輔助，呈現頂級事務所的高級沈穩感。',
+    role: 'Wix 範本架構重組、Figma 視覺改作、響應式切版與 GitHub Pages 部署',
+    tools: ['Figma', 'Wix 範本重構', 'HTML5 / CSS3', 'GitHub Pages', '資訊架構 (IA)'],
+    liveUrl: 'https://911097.github.io/LT-Architects/',
+    githubUrl: 'https://github.com/911097/LT-Architects',
+    leadParagraph: '針對建築事務所進行 Wix 範本架構重構與視覺改作。核心設計理念為「深色底、金色小字，圖放大，文字退後」，在 Figma 中完整規劃多裝置網格與響應式原型，打破套版文字喧賓奪主的框架，將純粹的建築光影與空間尺度推至視覺首位。',
+    problem: '常見套版範本排版擁擠且字體粗重喧賓奪主，容易分散訪客對建築作品空間張力與材質細節的注意力，缺乏頂級建築事務所應有的靜謐與高級感。',
+    solutionAndMethods: '以「深色底、金色小字，圖放大，文字退後」為核心方針：在 Figma 中拆解重組資訊架構，確立 12 欄響應式網格；弱化導覽與文字標題為極簡冷灰與金黃微光，作品圖幅推向極致；並將設計落地實作，部署至 GitHub Pages 線上展示。',
     highlights: [
-      '視覺設計概念：深色沉浸底色、細緻金色小字、作品圖幅最大化。',
-      '在 Figma 完成全站動線與網格配置，再落實至網頁架構。',
-      '資訊層級精練化，提升訪客探索建築專案的沈浸專注度。'
+      '【視覺概念】深色底、金色小字，圖放大，文字退後，營造高奢建築畫廊沉浸感。',
+      '【架構重構】打破原始範本多層混亂巢狀，提煉出 PORTFOLIO、ABOUT、NEWS 三大純粹動線。',
+      '【Figma 全案】完成 Mobile (375px) 到 Desktop (1440px) 完整響應式原型與元件規範。',
+      '【實作上線】完成網頁開發並部署至 GitHub Pages，提供流暢的即時互動體驗。'
     ],
     metrics: [
-      { label: '設計核心', value: '深色底 / 金色小字' },
-      { label: '畫面比重', value: '大圖留白' },
-      { label: '視覺工具', value: 'Figma 原型' }
+      { label: '設計 Concept', value: '深色底 / 金色小字' },
+      { label: '畫面比重', value: '圖放大 · 文字退後' },
+      { label: '核心工具', value: 'Wix + Figma' }
     ],
     artTheme: 'lt-architects'
+  },
+
+  // 3. E-COMMERCE RFM & BI (Slide 13: 電商顧客分群｜RFM、Power BI 與精準行銷)
+  {
+    id: 'rfm-data-analytics',
+    title: 'E-COMMERCE RFM & BI',
+    subtitleEn: '03 — DATA & BUSINESS · 13 / 31',
+    originalTitle: '電商顧客分群｜RFM、Power BI 與精準行銷',
+    filterCategory: 'data_bi',
+    displayBadge: '商業智慧 ‧ 數據分析',
+    designBadges: ['Power BI', 'RFM 分群', 'Google Apps Script', '開源專案'],
+    concept: '儀錶板呈現：Google Apps Script 互動儀表板 ｜ GitHub 開源：911097/114-2Fin',
+    tags: ['Power BI (pbix)', 'RFM 模型', 'Google Apps Script', 'UCI Retail', '54.1萬筆交易'],
+    year: '2026',
+    role: '資料前處理、異常值清洗、RFM 等頻分群演算、Power BI 5 頁報表建置、Google Apps Script 互動儀表板開發、IEEE 專題報告撰寫',
+    tools: ['Power BI (pbix)', 'Excel (樞紐/PERCENTILE)', 'Google Apps Script', 'GitHub 開源', 'UCI Online Retail'],
+    githubUrl: 'https://github.com/911097/114-2Fin',
+    liveUrl: 'https://script.google.com/macros/s/AKfycbzJpt1QhyBJtfJzkzOGebXk5obPGzD_gGKDseyc0Q18/dev',
+    leadParagraph: '個人專案（商業智慧課，2026/06）。以 UCI Online Retail 54.1 萬筆交易為基礎，嚴格剔除無 ID 與退貨零值後，透過 Excel 樞紐與 PERCENTILE 等頻切分 1–5 分建立 RFM 模型。建構 5 頁 Power BI 報表與 Google Apps Script 互動儀表板，並提出精準行銷策略。',
+    problem: 'UCI 原始 541,909 筆交易資料混雜無 Customer ID 紀錄 (135,080 筆)、退貨負值與零值 (10,624 筆)，若未經清理將產生巨大偏誤；且傳統均分法無法呈現電商顧客真實二八貢獻法則。',
+    solutionAndMethods: '嚴格清洗後鎖定 4,338 位有效顧客。計算最近購買日 (R)、消費頻率 (F)、消費金額 (M)，以 PERCENTILE 等頻切分為 1–5 分，再依規則歸納為 VIP、重要客戶、高消費客、流失客戶。透過 Power BI 製作 5 頁報表，並結合 Google Apps Script 開發線上互動儀表板，成果發表為 5 頁 IEEE 格式報告（含 7 項參考文獻）。',
+    highlights: [
+      '【客群貢獻對比】VIP 848 人（占 19.6%）貢獻 62.0% 營收；流失客戶 1,307 人（占 30.1%）僅貢獻 5.4%，完美驗證二八法則。',
+      '【多端視覺化】建構 5 頁 Power BI 深入報表，並以 Google Apps Script 開發線上網頁版互動儀表板。',
+      '【精準行銷策略】針對四大客群分別提出行銷方案，並對照資策會 MIC 網購調查數據驗證策略可行性。',
+      '【全案開源】54.1 萬筆原始交易、清洗程式碼、RFM 分群邏輯與 Power BI .pbix 原始檔完整於 GitHub 開源。'
+    ],
+    metrics: [
+      { label: '原始交易資料', value: '541,909 筆' },
+      { label: '清洗後有效顧客', value: '4,338 人' },
+      { label: 'VIP 營收貢獻', value: '62.0% (848人)' },
+      { label: '流失客營收占比', value: '5.4% (1,307人)' }
+    ],
+    artTheme: 'rfm-analytics'
   }
 ];
 
@@ -331,37 +369,7 @@ export const ARCHIVED_TEAM_PROJECTS: Project[] = [
     inventionAward: '曼谷 IPITEX (2027/02) & 高雄 KIDE (2026/11) 入選'
   },
 
-  // 7. RFM Segmentation (PDF P.13)
-  {
-    id: 'rfm-data-analytics',
-    title: '運動健身產業顧客分群 RFM',
-    subtitleEn: 'FITNESS RFM SEGMENTATION & PERSONA',
-    originalTitle: '運動健身產業顧客分群｜RFM 模型與 Persona 洞察',
-    filterCategory: 'graphic',
-    displayBadge: 'Graphic',
-    tags: ['Power BI', 'RFM Model', 'Persona'],
-    year: '2025',
-    role: '資料前處理、商品異常值清洗、商業簡報統整、Persona 洞察與行銷策劃',
-    tools: ['Power BI', 'Excel/Python', 'RFM Model', 'Persona 洞察'],
-    leadParagraph: '從 28.8 萬筆真實交易明細中清理出 23.8 萬筆有效數據，針對 58,115 位顧客進行 RFM 四分群，並建構完整 Persona 商業行銷決策。',
-    problem: '零售資料混雜商品測試碼、退貨異常與不連續交易，若未經嚴格清洗將直接誤導行銷預算配置。',
-    solutionAndMethods: '清理異常值與空值後鎖定 58,115 位顧客；以最近購買日 (R)、購買頻率 (F)、消費金額 (M) 演算出四大客群，並量身制定行銷策略。',
-    highlights: [
-      '原始數據 288,860 筆 → 嚴謹清理後 238,744 筆有效商品明細。',
-      '客群精準分群：高價值客群 4.2% (2,418人)、中價值客群 37.6% (21,842人)、低價值客群 51.1% (29,723人)、沉睡客群 7.1% (4,132人)。',
-      '地理洞察：北部 6 大城市占總顧客數 81.1%，新北市單一縣市逼近 1.4 萬人。',
-      '客群畫像 Persona：建立高價值客群代表「林志豪」（38 歲科技業主管），擬定精準尊榮行銷方案。'
-    ],
-    metrics: [
-      { label: '原始交易筆數', value: '288,860 筆' },
-      { label: '清理後有效資料', value: '238,744 筆' },
-      { label: '有效顧客數', value: '58,115 人' },
-      { label: '北部顧客集中度', value: '81.1%' }
-    ],
-    artTheme: 'rfm-analytics'
-  },
-
-  // 8. Nike Supply Chain (PDF P.14)
+  // 7. Nike Supply Chain (PDF P.14)
   {
     id: 'nike-supply-chain',
     title: 'Nike 全球供應鏈管理策略',
@@ -445,33 +453,7 @@ export const ARCHIVED_TEAM_PROJECTS: Project[] = [
     artTheme: 'rwd-luoyang'
   },
 
-  // 11. LT Architects (PDF P.17)
-  {
-    id: 'lt-architects-web',
-    title: 'LT Architects 建築事務所網站',
-    subtitleEn: 'LT ARCHITECTS WEBSITE REDESIGN',
-    originalTitle: 'LT Architects 建築事務所｜Wix 範本架構重構與視覺改作',
-    filterCategory: 'web_dev',
-    displayBadge: 'Web Dev',
-    tags: ['Wix', 'Figma', '深色底金色字'],
-    year: '2024',
-    role: '架構重構、版面配置、視覺改作',
-    tools: ['Figma', 'Wix 範本', '資訊架構 (IA)'],
-    leadParagraph: '針對建築事務所網站進行架構重整與視覺優化。核心概念：深色底、金色小字，圖片放大，文字適度退後，營造靜謐高雅的建築空間感。',
-    problem: '常見套版範本排版擁擠且字體喧賓奪主，無法突顯建築攝影與空間尺度的大氣感。',
-    solutionAndMethods: '重構導覽層級，放大建築完工攝影比例，改採低對比冷灰金小字輔助，呈現頂級事務所的高級沈穩感。',
-    highlights: [
-      '視覺設計概念：深色沉浸底色、細緻金色小字、作品圖幅最大化。',
-      '在 Figma 完成全站動線與網格配置，再落實至網頁架構。'
-    ],
-    metrics: [
-      { label: '設計核心', value: '深色底 / 金色小字' },
-      { label: '畫面比重', value: '大圖留白' }
-    ],
-    artTheme: 'lt-architects'
-  },
-
-  // 12. 3D White Model (PDF P.22)
+  // 11. 3D White Model (PDF P.22)
   {
     id: '3d-white-model',
     title: '3D 白模結構建模與空間幾何配置',

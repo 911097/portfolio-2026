@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, CheckCircle, Award, ArrowUpRight } from 'lucide-react';
+import { X, CheckCircle, Award, ArrowUpRight, Globe, Github } from 'lucide-react';
 import { Project } from '../types/portfolio';
 import { ProjectArt } from './ProjectArt';
 
@@ -58,7 +58,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         </div>
 
         {/* Scrollable Content Body */}
-        <div className="max-h-[85vh] overflow-y-auto p-6 md:p-10 space-y-10">
+        <div className="max-h-[85vh] overflow-y-auto p-6 md:p-10 space-y-8">
           {/* Main Visual Display */}
           <div className="w-full aspect-[16/9] md:aspect-[21/9] rounded-xl overflow-hidden shadow-sm border border-white/10">
             <ProjectArt theme={project.artTheme} className="w-full h-full" />
@@ -66,7 +66,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Title & Core Overview */}
           <div className="space-y-4">
-            <div className="flex flex-wrap items-baseline justify-between gap-4">
+            <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h2 className="text-2xl md:text-4xl font-sans font-bold tracking-tight text-white">
                   {project.title}
@@ -75,13 +75,62 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                   {project.originalTitle}
                 </p>
               </div>
-              {project.inventionAward && (
-                <div className="flex items-center gap-2 text-xs font-mono-code text-[#E5A84B] bg-[#E5A84B]/10 border border-[#E5A84B]/20 px-3 py-1.5 rounded-md">
-                  <Award size={14} />
-                  <span>{project.inventionAward}</span>
-                </div>
-              )}
+
+              <div className="flex flex-wrap items-center gap-2">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-mono-code bg-[#E5A84B] text-black hover:bg-[#d9993e] transition-colors shadow-sm whitespace-nowrap"
+                  >
+                    <Globe size={13} />
+                    <span>線上展示 (Live)</span>
+                    <ArrowUpRight size={13} />
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-mono-code bg-white/10 text-white hover:bg-white/20 border border-white/15 transition-colors shadow-sm whitespace-nowrap"
+                  >
+                    <Github size={13} />
+                    <span>GitHub 倉庫</span>
+                    <ArrowUpRight size={13} />
+                  </a>
+                )}
+                {project.inventionAward && (
+                  <div className="flex items-center gap-2 text-xs font-mono-code text-[#E5A84B] bg-[#E5A84B]/10 border border-[#E5A84B]/20 px-3 py-1.5 rounded-md">
+                    <Award size={14} />
+                    <span>{project.inventionAward}</span>
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Design Badges */}
+            {project.designBadges && project.designBadges.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-1">
+                {project.designBadges.map((badge, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2.5 py-1 rounded-md text-xs font-mono-code bg-white/[0.04] border border-white/10 text-stone-200"
+                  >
+                    【{badge}】
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Concept Banner */}
+            {project.concept && (
+              <div className="flex items-center gap-3 p-3.5 rounded-xl border border-[#E5A84B]/30 bg-[#E5A84B]/5 text-stone-200 text-xs sm:text-sm font-sans font-medium">
+                <span className="w-2 h-2 rounded-full bg-[#E5A84B] shrink-0 animate-pulse"></span>
+                <span className="text-[#E5A84B] font-semibold">{project.concept}</span>
+              </div>
+            )}
 
             <p className="text-base md:text-lg text-stone-300 leading-relaxed font-normal pt-1 font-sans">
               {project.leadParagraph}
@@ -153,7 +202,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               <h3 className="text-xs font-mono-code uppercase tracking-wider text-stone-400">
                 PROJECT METRICS (量化指標)
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div className={`grid gap-3 ${project.metrics.length === 3 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-2 sm:grid-cols-4'}`}>
                 {project.metrics.map((m, idx) => (
                   <div key={idx} className="p-3.5 rounded-lg border border-white/5 bg-white/[0.02]">
                     <span className="text-[11px] font-mono-code text-stone-500 block mb-0.5">{m.label}</span>
@@ -166,10 +215,41 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 
           {/* Interactive Actions Footer */}
           <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-mono-code text-stone-500">
-                {project.year} · {project.filterCategory}
-              </span>
+            <div className="flex flex-wrap items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-code border border-[#E5A84B]/40 bg-[#E5A84B]/10 text-[#E5A84B] hover:bg-[#E5A84B]/20 transition-colors"
+                >
+                  <Globe size={13} />
+                  <span>
+                    {project.id === 'rfm-data-analytics'
+                      ? '儀錶板呈現：Google Apps Script 互動儀表板'
+                      : project.id === 'lt-architects-web'
+                      ? '打開作品展示：911097.github.io/LT-Architects'
+                      : '開啟線上展示 (Live Demo)'}
+                  </span>
+                  <ArrowUpRight size={13} />
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono-code border border-white/15 bg-white/[0.04] text-stone-200 hover:text-white hover:border-white/30 transition-colors"
+                >
+                  <Github size={13} />
+                  <span>
+                    {project.id === 'rfm-data-analytics'
+                      ? 'GitHub 開源：github.com/911097/114-2Fin'
+                      : '檢視 GitHub 倉庫'}
+                  </span>
+                  <ArrowUpRight size={13} />
+                </a>
+              )}
               {project.videoLink && (
                 <a
                   href={project.videoLink}

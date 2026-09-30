@@ -426,32 +426,203 @@ export const ProjectArt: React.FC<ProjectArtProps> = ({ theme, className = '', i
         </svg>
       )}
 
-      {/* 7. RFM Analytics */}
+      {/* 7. E-COMMERCE RFM & BI (Slide 13: 各客群顧客占比 vs 營收占比 & 互動儀表板) */}
       {theme === 'rfm-analytics' && (
         <svg viewBox="0 0 800 500" className="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice">
-          <rect width="800" height="500" fill="#FAFAF8" />
-          <g transform="translate(240, 240)">
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#E2E8F0" strokeWidth="48" />
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#F87171" strokeWidth="48" strokeDasharray="385 754" strokeDashoffset="0" />
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#34D399" strokeWidth="48" strokeDasharray="283 754" strokeDashoffset="-385" />
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#3B82F6" strokeWidth="48" strokeDasharray="31 754" strokeDashoffset="-668" />
-            <circle cx="0" cy="0" r="120" fill="none" stroke="#FBBF24" strokeWidth="48" strokeDasharray="53 754" strokeDashoffset="-699" />
-            <text x="0" y="-8" textAnchor="middle" fill="#0F172A" fontSize="24" fontFamily="'Instrument Serif', serif">58,115</text>
-            <text x="0" y="16" textAnchor="middle" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">VALID CLIENTS</text>
+          <defs>
+            <linearGradient id="rfm-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0E131F" />
+              <stop offset="50%" stopColor="#0A0D15" />
+              <stop offset="100%" stopColor="#07090E" />
+            </linearGradient>
+            <linearGradient id="rfm-vip-gold" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FBBF24" />
+              <stop offset="100%" stopColor="#D97706" />
+            </linearGradient>
+            <linearGradient id="rfm-client-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#38BDF8" />
+              <stop offset="100%" stopColor="#0284C7" />
+            </linearGradient>
+            <filter id="rfm-glow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#000000" floodOpacity="0.5" />
+            </filter>
+          </defs>
+
+          {/* Background */}
+          <rect width="800" height="500" fill="url(#rfm-bg-grad)" />
+
+          {/* Top Window Chrome Header with real Google Apps Script URL & GitHub repo */}
+          <rect width="800" height="38" fill="#131926" stroke="#1F293D" strokeWidth="0.8" />
+          <circle cx="20" cy="19" r="4.5" fill="#EF4444" />
+          <circle cx="34" cy="19" r="4.5" fill="#F59E0B" />
+          <circle cx="48" cy="19" r="4.5" fill="#10B981" />
+
+          {/* Browser Address Bar with Google Apps Script URL */}
+          <g transform="translate(68, 7)">
+            <rect width="520" height="24" rx="6" fill="#0C101A" stroke="#25324A" strokeWidth="0.8" />
+            <circle cx="14" cy="12" r="2.5" fill="#10B981" />
+            <text x="24" y="16" fill="#38BDF8" fontSize="8.5" fontFamily="'JetBrains Mono', monospace" fontWeight="500">
+              script.google.com/macros/s/AKfycbzJpt1QhyBJtfJzkzOGebXk5obPGzD_gGKDseyc0Q18/dev
+            </text>
           </g>
-          <g transform="translate(480, 140)">
-            <text x="0" y="0" fill="#0F172A" fontSize="13" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="600">顧客地區分布（北部 6 大市占 81.1%）</text>
-            <rect x="0" y="40" width="220" height="18" rx="3" fill="#3B82F6" />
-            <text x="230" y="54" fill="#0F172A" fontSize="11" fontFamily="'JetBrains Mono', monospace">81.1%</text>
-            <rect x="0" y="70" width="80" height="18" rx="3" fill="#94A3B8" />
-            <text x="90" y="84" fill="#64748B" fontSize="11" fontFamily="'JetBrains Mono', monospace">中南部 18.9%</text>
-            
-            <rect x="0" y="120" width="260" height="90" rx="6" fill="#F1F5F9" stroke="#CBD5E1" strokeWidth="1" />
-            <text x="14" y="142" fill="#0F172A" fontSize="11" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="600">Persona 代表：林志豪（38 歲）</text>
-            <text x="14" y="162" fill="#475569" fontSize="10" fontFamily="'Plus Jakarta Sans', sans-serif">科技業中階主管 · 高客單運動補劑</text>
-            <text x="14" y="180" fill="#2563EB" fontSize="10" fontFamily="'JetBrains Mono', monospace">STRATEGY: VIP 尊榮私廚推播</text>
+
+          {/* GitHub badge */}
+          <g transform="translate(600, 7)">
+            <rect width="180" height="24" rx="6" fill="#1E293B" stroke="#334155" strokeWidth="0.8" />
+            <text x="12" y="16" fill="#F8FAFC" fontSize="8.5" fontFamily="'JetBrains Mono', monospace" fontWeight="600">
+              GitHub: 911097/114-2Fin
+            </text>
           </g>
-          <text x="60" y="470" fill="#64748B" fontSize="10" fontFamily="'JetBrains Mono', monospace">POWER BI ｜ 238,744 筆清理後交易明細</text>
+
+          {/* ================= SINGLE UNIFIED DASHBOARD CHART: 各客群顧客占比 vs 營收貢獻 ================= */}
+          <g transform="translate(30, 48)">
+            {/* Unified Main Dashboard Container Panel */}
+            <rect width="740" height="436" rx="8" fill="#111624" stroke="#1E283D" strokeWidth="1" filter="url(#rfm-glow)" />
+
+            {/* Top Dashboard Header & Legend */}
+            <g transform="translate(24, 22)">
+              <text x="0" y="0" fill="#FFFFFF" fontSize="13.5" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="700">
+                E-COMMERCE RFM 顧客分群與營收貢獻分析 ｜ 541,909 筆交易資料
+              </text>
+              <text x="0" y="16" fill="#94A3B8" fontSize="9.5" fontFamily="'JetBrains Mono', monospace">
+                UCI Online Retail · 4,338 位有效顧客 · PERCENTILE 等頻切分 1–5 分
+              </text>
+
+              {/* Legend */}
+              <g transform="translate(460, -4)">
+                <circle cx="0" cy="5" r="4.5" fill="#38BDF8" />
+                <text x="10" y="9" fill="#94A3B8" fontSize="9" fontFamily="'JetBrains Mono', monospace">顧客人數占比 (%)</text>
+                <circle cx="120" cy="5" r="4.5" fill="#E5A84B" />
+                <text x="130" y="9" fill="#E5A84B" fontSize="9" fontFamily="'JetBrains Mono', monospace" fontWeight="600">營收金額占比 (%)</text>
+              </g>
+            </g>
+
+            {/* KPI Metric Strip */}
+            <g transform="translate(24, 52)">
+              {/* Metric 1 */}
+              <g transform="translate(0, 0)">
+                <rect width="165" height="46" rx="5" fill="#0C101A" stroke="#1F2A40" strokeWidth="0.8" />
+                <text x="12" y="17" fill="#64748B" fontSize="8" fontFamily="'JetBrains Mono', monospace">原始交易總量</text>
+                <text x="12" y="36" fill="#F8FAFC" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">541,909 筆</text>
+                <text x="155" y="32" textAnchor="end" fill="#475569" fontSize="7.5" fontFamily="'JetBrains Mono', monospace">UCI Retail</text>
+              </g>
+              {/* Metric 2 */}
+              <g transform="translate(176, 0)">
+                <rect width="165" height="46" rx="5" fill="#0C101A" stroke="#1F2A40" strokeWidth="0.8" />
+                <text x="12" y="17" fill="#64748B" fontSize="8" fontFamily="'JetBrains Mono', monospace">清洗後有效顧客</text>
+                <text x="12" y="36" fill="#38BDF8" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">4,338 人</text>
+                <text x="155" y="32" textAnchor="end" fill="#475569" fontSize="7.5" fontFamily="'JetBrains Mono', monospace">剔除無ID/退貨</text>
+              </g>
+              {/* Metric 3 (VIP Highlight) */}
+              <g transform="translate(352, 0)">
+                <rect width="175" height="46" rx="5" fill="#1A150D" stroke="#E5A84B" strokeWidth="1" />
+                <text x="12" y="17" fill="#E5A84B" fontSize="8" fontFamily="'JetBrains Mono', monospace" fontWeight="600">★ VIP 營收貢獻占比</text>
+                <text x="12" y="36" fill="#FDE047" fontSize="13.5" fontFamily="'JetBrains Mono', monospace" fontWeight="800">62.0% (848人)</text>
+                <text x="165" y="32" textAnchor="end" fill="#D97706" fontSize="7.5" fontFamily="'JetBrains Mono', monospace">二八法則</text>
+              </g>
+              {/* Metric 4 */}
+              <g transform="translate(538, 0)">
+                <rect width="154" height="46" rx="5" fill="#0C101A" stroke="#1F2A40" strokeWidth="0.8" />
+                <text x="12" y="17" fill="#64748B" fontSize="8" fontFamily="'JetBrains Mono', monospace">流失客戶營收占比</text>
+                <text x="12" y="36" fill="#F87171" fontSize="13" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">5.4% (1,307人)</text>
+                <text x="144" y="32" textAnchor="end" fill="#475569" fontSize="7.5" fontFamily="'JetBrains Mono', monospace">沉睡/流失</text>
+              </g>
+            </g>
+
+            {/* Main Expansive Chart Area */}
+            <g transform="translate(24, 118)">
+              {/* Inner Chart Frame */}
+              <rect width="692" height="262" rx="6" fill="#0D111C" stroke="#192236" strokeWidth="0.8" />
+
+              {/* Y-Axis Grid Lines & Values */}
+              <g transform="translate(42, 28)">
+                {/* 60% line */}
+                <text x="0" y="8" textAnchor="end" fill="#64748B" fontSize="9.5" fontFamily="'JetBrains Mono', monospace">60%</text>
+                <line x1="8" y1="5" x2="628" y2="5" stroke="#1E283D" strokeWidth="0.8" strokeDasharray="3 3" />
+
+                {/* 40% line */}
+                <text x="0" y="65" textAnchor="end" fill="#64748B" fontSize="9.5" fontFamily="'JetBrains Mono', monospace">40%</text>
+                <line x1="8" y1="62" x2="628" y2="62" stroke="#1E283D" strokeWidth="0.8" strokeDasharray="3 3" />
+
+                {/* 20% line */}
+                <text x="0" y="122" textAnchor="end" fill="#64748B" fontSize="9.5" fontFamily="'JetBrains Mono', monospace">20%</text>
+                <line x1="8" y1="119" x2="628" y2="119" stroke="#1E283D" strokeWidth="0.8" strokeDasharray="3 3" />
+
+                {/* 0% baseline */}
+                <text x="0" y="179" textAnchor="end" fill="#64748B" fontSize="9.5" fontFamily="'JetBrains Mono', monospace">0%</text>
+                <line x1="8" y1="176" x2="628" y2="176" stroke="#334155" strokeWidth="1.2" />
+
+                {/* ---- GROUP 1: 重要客戶 (35.2% vs 24.8%) ---- */}
+                <g transform="translate(48, 0)">
+                  {/* 顧客占比: 35.2% (height ~ 100px) */}
+                  <rect x="0" y="76" width="40" height="100" rx="3.5" fill="url(#rfm-client-blue)" />
+                  <text x="20" y="68" textAnchor="middle" fill="#7DD3FC" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">35.2%</text>
+                  {/* 營收占比: 24.8% (height ~ 70px) */}
+                  <rect x="46" y="106" width="40" height="70" rx="3.5" fill="#D97706" />
+                  <text x="66" y="98" textAnchor="middle" fill="#FCD34D" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">24.8%</text>
+                  {/* Titles */}
+                  <text x="43" y="196" textAnchor="middle" fill="#FFFFFF" fontSize="11" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="600">重要客戶</text>
+                  <text x="43" y="210" textAnchor="middle" fill="#94A3B8" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">1,527人 ‧ 次要營收支柱</text>
+                </g>
+
+                {/* ---- GROUP 2: VIP 客群 (19.6% vs 62.0%) [CORE HIGHLIGHT] ---- */}
+                <g transform="translate(200, 0)">
+                  {/* 顧客占比: 19.6% (height ~ 56px) */}
+                  <rect x="0" y="120" width="40" height="56" rx="3.5" fill="url(#rfm-client-blue)" />
+                  <text x="20" y="112" textAnchor="middle" fill="#7DD3FC" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">19.6%</text>
+                  {/* 營收占比: 62.0% (height ~ 176px) */}
+                  <rect x="46" y="0" width="40" height="176" rx="3.5" fill="url(#rfm-vip-gold)" />
+                  <text x="66" y="-8" textAnchor="middle" fill="#FDE047" fontSize="13.5" fontFamily="'JetBrains Mono', monospace" fontWeight="900">62.0%</text>
+                  
+                  {/* VIP Luminous Badge Callout */}
+                  <g transform="translate(94, 18)">
+                    <rect width="84" height="22" rx="4" fill="#E5A84B" fillOpacity="0.2" stroke="#E5A84B" strokeWidth="1" />
+                    <text x="42" y="15" textAnchor="middle" fill="#FDE047" fontSize="8.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">848人 貢獻62%</text>
+                  </g>
+                  {/* Titles */}
+                  <text x="43" y="196" textAnchor="middle" fill="#FDE047" fontSize="11.5" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="800">★ VIP (高價值客群)</text>
+                  <text x="43" y="210" textAnchor="middle" fill="#E5A84B" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">848人 ‧ 二八法則核心客群</text>
+                </g>
+
+                {/* ---- GROUP 3: 高消費客 (15.1% vs 7.9%) ---- */}
+                <g transform="translate(362, 0)">
+                  {/* 顧客占比: 15.1% (height ~ 43px) */}
+                  <rect x="0" y="133" width="40" height="43" rx="3.5" fill="url(#rfm-client-blue)" />
+                  <text x="20" y="125" textAnchor="middle" fill="#7DD3FC" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">15.1%</text>
+                  {/* 營收占比: 7.9% (height ~ 22px) */}
+                  <rect x="46" y="154" width="40" height="22" rx="3.5" fill="#D97706" />
+                  <text x="66" y="146" textAnchor="middle" fill="#FCD34D" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">7.9%</text>
+                  {/* Titles */}
+                  <text x="43" y="196" textAnchor="middle" fill="#FFFFFF" fontSize="11" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="600">高消費客</text>
+                  <text x="43" y="210" textAnchor="middle" fill="#94A3B8" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">656人 ‧ 客單價高頻次回購</text>
+                </g>
+
+                {/* ---- GROUP 4: 流失客戶 (30.1% vs 5.4%) ---- */}
+                <g transform="translate(512, 0)">
+                  {/* 顧客占比: 30.1% (height ~ 86px) */}
+                  <rect x="0" y="90" width="40" height="86" rx="3.5" fill="url(#rfm-client-blue)" />
+                  <text x="20" y="82" textAnchor="middle" fill="#7DD3FC" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">30.1%</text>
+                  {/* 營收占比: 5.4% (height ~ 15px) */}
+                  <rect x="46" y="161" width="40" height="15" rx="3.5" fill="#D97706" />
+                  <text x="66" y="153" textAnchor="middle" fill="#FCD34D" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">5.4%</text>
+                  {/* Titles */}
+                  <text x="43" y="196" textAnchor="middle" fill="#CBD5E1" fontSize="11" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="600">流失客戶</text>
+                  <text x="43" y="210" textAnchor="middle" fill="#94A3B8" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">1,307人 ‧ 沉睡喚回或資源止血</text>
+                </g>
+              </g>
+            </g>
+
+            {/* Bottom Single Unified Status Line */}
+            <g transform="translate(24, 412)">
+              <rect width="692" height="16" fill="transparent" />
+              <text x="6" y="0" fill="#94A3B8" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+                ● 儀錶板呈現：Google Apps Script 互動 Web App ｜ 原始碼與資料集：github.com/911097/114-2Fin
+              </text>
+              <text x="686" y="0" textAnchor="end" fill="#64748B" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+                Power BI (pbix) ‧ PERCENTILE 等頻切分 1–5 分
+              </text>
+            </g>
+          </g>
         </svg>
       )}
 
@@ -506,18 +677,184 @@ export const ProjectArt: React.FC<ProjectArtProps> = ({ theme, className = '', i
         </svg>
       )}
 
-      {/* 10. LT Architects */}
+      {/* 10. LT Architects (單張真實網站截圖示意 · 911097.github.io/LT-Architects) */}
       {theme === 'lt-architects' && (
         <svg viewBox="0 0 800 500" className="w-full h-full object-cover" preserveAspectRatio="xMidYMid slice">
-          <rect width="800" height="500" fill="#111113" />
-          <rect x="80" y="60" width="640" height="380" fill="#17171A" stroke="#26262B" strokeWidth="1" />
-          <text x="120" y="110" fill="#D4AF37" fontSize="13" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.2em">LT ARCHITECTS</text>
-          <text x="120" y="170" fill="#FFFFFF" fontSize="32" fontFamily="'Instrument Serif', serif">BOSTON ECL HALL</text>
-          <text x="120" y="196" fill="#888890" fontSize="11" fontFamily="'Plus Jakarta Sans', sans-serif">Concept：深色底、金色小字，圖放大，文字退後。</text>
-          <rect x="360" y="90" width="320" height="240" fill="#202025" stroke="#33333A" strokeWidth="1" />
-          <polygon points="360,330 460,180 540,240 680,120 680,330" fill="#2E2E36" opacity="0.8" />
-          <text x="660" y="315" textAnchor="end" fill="#D4AF37" fontSize="10" fontFamily="'JetBrains Mono', monospace">01 / 35</text>
-          <text x="120" y="410" fill="#666670" fontSize="10" fontFamily="'JetBrains Mono', monospace">WIX 範本架構重構 ｜ FIGMA 視覺改作</text>
+          <defs>
+            <linearGradient id="lt-sky-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#1B202A" />
+              <stop offset="35%" stopColor="#11141A" />
+              <stop offset="100%" stopColor="#080A0E" />
+            </linearGradient>
+            <linearGradient id="lt-glass-facet" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#2E3746" />
+              <stop offset="30%" stopColor="#1E242F" />
+              <stop offset="70%" stopColor="#141820" />
+              <stop offset="100%" stopColor="#0B0D12" />
+            </linearGradient>
+            <linearGradient id="lt-cantilever-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#E5A84B" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#E5A84B" stopOpacity="0" />
+            </linearGradient>
+            <filter id="lt-browser-shadow" x="-5%" y="-5%" width="110%" height="110%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#000000" floodOpacity="0.6" />
+            </filter>
+          </defs>
+
+          {/* Full Browser Window Frame */}
+          <rect width="800" height="500" fill="#0C0E13" />
+
+          {/* Browser Chrome Header (Toolbar & Tabs) */}
+          <rect width="800" height="40" fill="#14171E" stroke="#222834" strokeWidth="0.8" />
+          
+          {/* Mac-style Window Controls */}
+          <circle cx="22" cy="20" r="4.5" fill="#EF4444" />
+          <circle cx="36" cy="20" r="4.5" fill="#F59E0B" />
+          <circle cx="50" cy="20" r="4.5" fill="#10B981" />
+
+          {/* Active Browser Tab */}
+          <path d="M72,40 L84,10 L246,10 L258,40 Z" fill="#0C0E13" />
+          <rect x="94" y="21" width="8" height="6.5" fill="none" stroke="#D4AF37" strokeWidth="0.8" />
+          <text x="108" y="24" fill="#E2E8F0" fontSize="9.5" fontFamily="'Plus Jakarta Sans', sans-serif" fontWeight="500">
+            LT ARCHITECTS — Boston
+          </text>
+
+          {/* Browser URL Address Bar */}
+          <rect x="270" y="9" width="360" height="22" rx="11" fill="#1B202B" stroke="#2A3142" strokeWidth="0.8" />
+          <g transform="translate(282, 14)">
+            {/* Padlock icon */}
+            <path d="M2.5,5 L2.5,3 C2.5,1.6 3.6,0.5 5,0.5 C6.4,0.5 7.5,1.6 7.5,3 L7.5,5" fill="none" stroke="#10B981" strokeWidth="1" />
+            <rect x="1" y="4.5" width="8" height="6" rx="1" fill="#10B981" />
+          </g>
+          <text x="298" y="24" fill="#94A3B8" fontSize="9" fontFamily="'JetBrains Mono', monospace">
+            https://911097.github.io/LT-Architects/
+          </text>
+
+          {/* Viewport Content: Real Website Page */}
+          <g transform="translate(0, 40)">
+            {/* Top Navigation Bar */}
+            <rect width="800" height="52" fill="#0C0E13" opacity="0.95" />
+            <line x1="0" y1="52" x2="800" y2="52" stroke="#1A1F29" strokeWidth="0.8" />
+
+            {/* Brand Logo [LT] ARCHITECTS */}
+            <g transform="translate(36, 18)">
+              <rect x="0" y="0" width="22" height="17" fill="none" stroke="#D4AF37" strokeWidth="1.2" />
+              <text x="11" y="12.5" textAnchor="middle" fill="#D4AF37" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" fontWeight="bold">LT</text>
+              <text x="30" y="13.5" fill="#F8FAFC" fontSize="13" fontFamily="'Cinzel', serif" letterSpacing="0.18em" fontWeight="bold">ARCHITECTS</text>
+            </g>
+
+            {/* Navigation Links */}
+            <g transform="translate(560, 30)">
+              <text x="0" y="0" fill="#D4AF37" fontSize="10" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.14em" fontWeight="600">PORTFOLIO</text>
+              <line x1="0" y1="4" x2="68" y2="4" stroke="#D4AF37" strokeWidth="1.5" />
+              <text x="100" y="0" fill="#8892A0" fontSize="10" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.14em">ABOUT</text>
+              <text x="175" y="0" fill="#8892A0" fontSize="10" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.14em">NEWS</text>
+            </g>
+
+            {/* Main Stage: Cinematic Architectural Photography Layout */}
+            <g transform="translate(36, 76)">
+              {/* Left Editorial Info */}
+              <g transform="translate(0, 20)">
+                <text x="0" y="0" fill="#6A7587" fontSize="9" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.2em">
+                  LT ARCHITECTS
+                </text>
+                <text x="0" y="18" fill="#D4AF37" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.18em" fontWeight="600">
+                  FEATURED PROJECTS
+                </text>
+
+                {/* Counter & Project Title */}
+                <text x="0" y="74" fill="#64748B" fontSize="11" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.08em">
+                  01 / 35
+                </text>
+                <text x="0" y="115" fill="#FFFFFF" fontSize="38" fontFamily="'Instrument Serif', Georgia, serif" fontWeight="normal" letterSpacing="-0.02em">
+                  ECL Hall
+                </text>
+                <text x="0" y="142" fill="#94A3B8" fontSize="16" fontFamily="'Instrument Serif', Georgia, serif" fontStyle="italic">
+                  boston, massachusetts
+                </text>
+
+                {/* Concept philosophy line */}
+                <g transform="translate(0, 180)">
+                  <rect x="0" y="0" width="220" height="26" rx="4" fill="#D4AF37" fillOpacity="0.08" stroke="#D4AF37" strokeWidth="0.8" />
+                  <text x="10" y="16.5" fill="#D4AF37" fontSize="8.5" fontFamily="'Noto Sans TC', sans-serif">
+                    深色底、金色小字，圖放大，文字退後
+                  </text>
+                </g>
+
+                {/* CTA Link */}
+                <g transform="translate(0, 235)">
+                  <text x="0" y="0" fill="#D4AF37" fontSize="10.5" fontFamily="'JetBrains Mono', monospace" letterSpacing="0.12em" fontWeight="600">
+                    VIEW PROJECT ↗
+                  </text>
+                  <line x1="0" y1="4" x2="108" y2="4" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
+                </g>
+              </g>
+
+              {/* Right Large Hero Architecture Photograph Mockup */}
+              <g transform="translate(260, 0)">
+                {/* Photo Container Frame with Shadow */}
+                <rect width="468" height="295" rx="6" fill="url(#lt-sky-grad)" stroke="#1F2533" strokeWidth="1" />
+                
+                {/* Dramatic Skyscraper Perspective Facade */}
+                <polygon points="190,295 280,0 400,0 460,295" fill="url(#lt-glass-facet)" />
+                <polygon points="70,295 190,295 280,0 170,0" fill="#151A22" />
+                
+                {/* Vertical Steel Mullions (perspective converge to sky) */}
+                <line x1="205" y1="295" x2="290" y2="0" stroke="#374357" strokeWidth="1" />
+                <line x1="240" y1="295" x2="310" y2="0" stroke="#3D4B62" strokeWidth="1" />
+                <line x1="280" y1="295" x2="335" y2="0" stroke="#4C5D7A" strokeWidth="1" />
+                <line x1="325" y1="295" x2="365" y2="0" stroke="#60769B" strokeWidth="1.2" />
+                <line x1="375" y1="295" x2="400" y2="0" stroke="#7A93BD" strokeWidth="1.2" />
+                <line x1="420" y1="295" x2="435" y2="0" stroke="#9BB2DC" strokeWidth="1.2" />
+
+                {/* Horizontal Floor Slabs & Window Light Rows */}
+                <line x1="160" y1="240" x2="455" y2="240" stroke="#252D3B" strokeWidth="0.8" />
+                <line x1="180" y1="195" x2="445" y2="195" stroke="#2A3444" strokeWidth="0.8" />
+                <line x1="200" y1="150" x2="435" y2="150" stroke="#2F3B4D" strokeWidth="0.8" />
+                <line x1="220" y1="105" x2="425" y2="105" stroke="#354256" strokeWidth="0.8" />
+                <line x1="240" y1="60" x2="415" y2="60" stroke="#3B495F" strokeWidth="0.8" />
+
+                {/* Warm Interior Lighting in Upper Floors */}
+                <rect x="295" y="153" width="34" height="6" fill="#E5A84B" opacity="0.65" />
+                <rect x="345" y="108" width="40" height="6" fill="#E5A84B" opacity="0.5" />
+                <rect x="340" y="63" width="28" height="5" fill="#E5A84B" opacity="0.75" />
+
+                {/* Foreground Cantilevered Modern Glass Pavilion */}
+                <g transform="translate(10, 155)">
+                  {/* Massing & Terrace */}
+                  <polygon points="0,140 40,35 240,35 250,140" fill="#141820" stroke="#252C3A" strokeWidth="0.8" />
+                  <rect x="30" y="60" width="190" height="35" fill="#191F2B" stroke="#323C4E" strokeWidth="1" />
+                  {/* Glass Balustrade */}
+                  <rect x="30" y="50" width="190" height="15" fill="#8AB4F8" fillOpacity="0.25" stroke="#8AB4F8" strokeWidth="0.6" />
+                  {/* Warm Glowing Architectural Interior */}
+                  <rect x="45" y="70" width="38" height="20" fill="#E5A84B" opacity="0.85" />
+                  <rect x="95" y="70" width="55" height="20" fill="#E5A84B" opacity="0.6" />
+                  <rect x="160" y="70" width="45" height="20" fill="#E5A84B" opacity="0.9" />
+                  {/* Soft Light Spill on Deck */}
+                  <polygon points="30,95 220,95 240,140 10,140" fill="url(#lt-cantilever-glow)" />
+                </g>
+
+                {/* Photo Watermark Badge */}
+                <g transform="translate(365, 260)">
+                  <rect width="90" height="22" rx="3" fill="#0C0E13" fillOpacity="0.85" stroke="#222834" strokeWidth="0.8" />
+                  <text x="45" y="15" textAnchor="middle" fill="#D4AF37" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+                    BOSTON · 2024
+                  </text>
+                </g>
+              </g>
+            </g>
+
+            {/* Bottom Subtle Status Bar of Website */}
+            <g transform="translate(36, 388)">
+              <line x1="0" y1="0" x2="728" y2="0" stroke="#161B24" strokeWidth="0.8" />
+              <text x="0" y="16" fill="#4B5565" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+                PROJECT 01 / 35 — ECL HALL BOSTON ｜ ARCHITECTURAL WORKS
+              </text>
+              <text x="728" y="16" textAnchor="end" fill="#6A7587" fontSize="8.5" fontFamily="'JetBrains Mono', monospace">
+                SCROLL TO EXPLORE ↓
+              </text>
+            </g>
+          </g>
         </svg>
       )}
 

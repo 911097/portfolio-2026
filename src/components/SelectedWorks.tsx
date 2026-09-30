@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Globe, Github } from 'lucide-react';
 import { Project } from '../types/portfolio';
 import { ProjectArt } from './ProjectArt';
 
@@ -24,6 +24,9 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
     if (filter === 'frontend') {
       return project.filterCategory === 'web_dev';
     }
+    if (filter === 'data_bi') {
+      return project.filterCategory === 'data_bi';
+    }
     return project.filterCategory === filter;
   };
 
@@ -43,6 +46,11 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
       key: 'frontend',
       label: '前端網頁',
       count: String(projects.filter((p) => p.filterCategory === 'web_dev').length).padStart(2, '0'),
+    },
+    {
+      key: 'data_bi',
+      label: '商業數據',
+      count: String(projects.filter((p) => p.filterCategory === 'data_bi').length).padStart(2, '0'),
     },
   ];
 
@@ -133,20 +141,50 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
                       </div>
                     )}
 
-                    {/* Subtle Hover Action Arrow (floats in top-right when not award, or top-left) */}
+                    {/* Subtle Hover Action Arrow */}
                     <div className="absolute top-2.5 left-2.5 w-7 h-7 rounded-lg bg-[#0A0C0F]/80 backdrop-blur-sm flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <ArrowUpRight size={15} />
                     </div>
                   </div>
 
-                  {/* Meta Row: Clean single-line Category/Year */}
-                  <div className="text-xs font-mono-code text-stone-500 mb-2">
-                    {project.displayBadge}
+                  {/* Meta Row: Clean Category / Year & Optional Live / GitHub Quick Links */}
+                  <div className="flex items-center justify-between gap-2 text-xs font-mono-code text-stone-500 mb-2">
+                    <span>{project.displayBadge}</span>
+                    <div className="flex items-center gap-1.5">
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono-code bg-white/[0.04] text-stone-300 border border-white/10 hover:text-white hover:bg-white/[0.08] transition-colors whitespace-nowrap"
+                          title="查看 GitHub 原始碼與資料集"
+                        >
+                          <Github size={11} />
+                          <span>GitHub</span>
+                          <ArrowUpRight size={10} />
+                        </a>
+                      )}
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono-code bg-[#E5A84B]/10 text-[#E5A84B] border border-[#E5A84B]/25 hover:bg-[#E5A84B]/20 transition-colors whitespace-nowrap"
+                          title={project.id === 'rfm-data-analytics' ? '開啟 Google Apps Script 互動儀表板' : '開啟線上作品展示'}
+                        >
+                          <Globe size={11} />
+                          <span>Live Demo</span>
+                          <ArrowUpRight size={10} />
+                        </a>
+                      )}
+                    </div>
                   </div>
 
                   {/* Clean Title */}
-                  <h3 className="text-lg font-bold font-sans-clean tracking-tight text-white mb-2">
-                    {project.title}
+                  <h3 className="text-lg font-bold font-sans-clean tracking-tight text-white mb-2 flex items-baseline justify-between gap-2">
+                    <span>{project.title}</span>
                   </h3>
 
                   {/* Description */}

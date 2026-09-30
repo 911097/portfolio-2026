@@ -7,7 +7,8 @@ export type ProjectFilter =
   | 'graphic' 
   | 'web_dev' 
   | 'ai_systems'
-  | 'illustration';
+  | 'illustration'
+  | 'data_bi';
 
 export interface ProjectMetric {
   label: string;
@@ -33,6 +34,11 @@ export interface Project {
   artTheme: 'system-dev' | 'visual-design' | 'ui-ux-phone' | 'campus-branding' | 'mobile-wallet' | 'infographic-poster' | 'hospital-sensing' | 'rehab-skeleton' | 'safety-surveillance' | 'rfm-analytics' | 'supply-chain' | 'smartfit-mirror' | 'lt-architects' | 'rwd-luoyang' | 'app-ui' | 'elderly-care' | 'white-model-3d' | 'print-isometric' | 'anonymous-tracking-ui';
   inventionAward?: string;
   videoLink?: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  concept?: string;
+  designBadges?: string[];
+  deckSlide?: string;
   subPages?: {
     subtitle: string;
     description: string;
